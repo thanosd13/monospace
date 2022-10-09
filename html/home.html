@@ -1,0 +1,55 @@
+<div class="container">
+    <br><br><br><br>
+    <div class="row">
+        <div class="col-md-10">
+            <i class="glyphicon glyphicon-user"></i>
+            <span>Users</span>
+        </div>
+        <div class="col-md-2">
+            <span class="selected-users"> {{selectedUsers}} selected</span>
+            <i class="glyphicon glyphicon-question-sign question-mark"></i>
+            
+        </div>
+    </div>
+    <br>
+    <div class="row">
+
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table table-bordred table-striped">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox"></th>
+                                <th>TYPE</th>
+                                <th>NAME</th>
+                                <th>EMAIL</th>
+                                <th>TELEPHONE</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat = "item in users">
+                                <td><input type="checkbox"></td>
+                                <td>{{item.type}}</td>
+                                <td>{{item.name}}</td>
+                                <td>{{item.email}}</td>
+                                <td>{{item.phone}}</td>
+                                <td> <label class="switch">
+                                    <input type="checkbox"
+                                        ng-model="item.active"
+                                        ng-true-value = 'true'
+                                        ng-false-value = 'false'
+                                        ng-change = "switchFunc(item.id)">
+                                    <span class="slider round"></span>
+                                </label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+
