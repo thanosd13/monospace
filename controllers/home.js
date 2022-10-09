@@ -21,17 +21,22 @@ myapp.controller("mainController",
             };
             
             $scope.switchFunc = function(id) {
-                console.log(id);
-                $scope.id = id;
+
+                for(var index in $scope.users){
+                    if($scope.users[index].id === id){
+                        $scope.switchFlag = $scope.users[index].active;
+                    };
+                };
+
+
                 $http({
                     url: 'https://thanos.users.challenge.dev.monospacelabs.com/users/' +id,
                     method: "PUT",
-                    data: {},
+                    data: {active : $scope.switchFlag},
                     headers: {'Content-Type': 'application/json'},
                 })
                 .then(function(response) {
                     $scope.update = response.data;
-                    $state.go('home');
                 }, 
                 function(response) { 
                         // failed
